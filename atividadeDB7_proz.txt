@@ -1,0 +1,50 @@
+
+
+1:Base de dados:
+
+CREATE DATABASE EscolaDB;
+USE EscolaDB;
+
+2:tabela alunos 
+
+CREATE TABLE alunos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    idade INT,
+    curso_id INT,
+    FOREIGN KEY (curso_id) REFERENCES cursos(id)
+);
+
+3: tabela cursos
+
+CREATE TABLE cursos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    descricao TEXT
+);
+
+
+4: inserção de dados 
+
+INSERT INTO cursos (nome, descricao) VALUES ('Informática', 'Curso de informática básica');
+INSERT INTO cursos (nome, descricao) VALUES ('Inglês', 'Curso de inglês intermediário');
+
+5: inserção de dados alunos
+
+INSERT INTO alunos (nome, idade, curso_id) VALUES ('João', 20, 1); -- João está matriculado no curso de Informática
+INSERT INTO alunos (nome, idade, curso_id) VALUES ('Maria', 25, 2); -- Maria está matriculada no curso de Inglês
+
+
+ 6: informações de ambas as tabelas (join)
+
+SELECT alunos.nome AS nome_aluno, cursos.nome AS nome_curso
+FROM alunos
+JOIN cursos ON alunos.curso_id = cursos.id;
+
+
+ 
+
+
+
+
+
